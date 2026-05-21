@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --display: 'Instrument Serif', 'Noto Serif SC', 'Songti SC', 'STSong', ui-serif, serif;
+  --ui: 'Geist', 'PingFang SC', 'Noto Sans SC', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'SF Mono', Menlo, ui-monospace, monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--ui);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #0a0a0a;
+  color: #f5f5f4;
+  overflow-x: hidden;
+}
+
+/* ============ Scenes ============ */
+.scene-clear-day {
+  background:
+    radial-gradient(ellipse 50% 40% at 78% 18%, #fff4cf 0%, transparent 65%),
+    radial-gradient(ellipse 80% 50% at 50% 100%, #ffd9a1 0%, transparent 60%),
+    linear-gradient(180deg, #5e9dd0 0%, #92bedb 35%, #d9d2bd 78%, #f0c393 100%);
+  color: #1c1714;
+}
+
+.scene-clear-night {
+  background:
+    radial-gradient(ellipse 40% 30% at 22% 25%, #2f3a6e 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, #0a0f2c 0%, transparent 70%),
+    linear-gradient(180deg, #060a23 0%, #131838 50%, #1d2150 100%);
+  color: #e8e6f0;
+}
+
+.scene-cloudy {
+  background:
+    radial-gradient(ellipse 60% 40% at 30% 30%, #d9dde4 0%, transparent 70%),
+    radial-gradient(ellipse 50% 30% at 75% 60%, #c5cad3 0%, transparent 70%),
+    linear-gradient(180deg, #8a93a3 0%, #a7adb8 50%, #c4c8cf 100%);
+  color: #1f242d;
+}
+
+.scene-rain {
+  background:
+    radial-gradient(ellipse 60% 30% at 50% 0%, #1a2436 0%, transparent 70%),
+    linear-gradient(180deg, #1f2937 0%, #313e51 45%, #475569 88%, #2a3445 100%);
+  color: #eef2f7;
+}
+
+.scene-snow {
+  background:
+    radial-gradient(ellipse 50% 30% at 50% 10%, #e6e9f0 0%, transparent 70%),
+    linear-gradient(180deg, #b9c1d4 0%, #d6dae6 40%, #ecedf2 78%, #d4d2dd 100%);
+  color: #1a1f2c;
+}
+
+.scene-thunder {
+  background:
+    radial-gradient(ellipse 50% 30% at 70% 30%, #2d2547 0%, transparent 70%),
+    linear-gradient(180deg, #0e0a1f 0%, #1a1733 50%, #2b2a4a 100%);
+  color: #efeaf6;
+  position: relative;
+}
+.scene-thunder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 250, 220, 0);
+  animation: thunder-flash 8s infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes thunder-flash {
+  0%, 88%, 92%, 100% { background: rgba(255, 250, 220, 0); }
+  89%, 91% { background: rgba(255, 250, 220, 0.18); }
+  90% { background: rgba(255, 250, 220, 0.35); }
+}
+
+.scene-mist {
+  background: linear-gradient(180deg, #b3b6b1 0%, #c8c8c2 40%, #dcd9d0 75%, #c2bfb6 100%);
+  color: #232524;
+}
+
+/* ============ Decorative animations ============ */
+.sun-rays {
+  transform-origin: center;
+  animation: spin-slow 90s linear infinite;
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.sun-pulse {
+  animation: pulse-sun 6s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes pulse-sun {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+
+.rain-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.raindrop {
+  position: absolute;
+  top: -120px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(229, 238, 250, 0.55));
+  animation: rainfall linear infinite;
+}
+@keyframes rainfall {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-30px, 120vh, 0); }
+}
+
+.snow-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.snowflake {
+  position: absolute;
+  top: -20px;
+  color: rgba(255, 255, 255, 0.85);
+  animation: snowfall linear infinite;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+@keyframes snowfall {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  100% { transform: translate3d(40px, 120vh, 0) rotate(360deg); }
+}
+
+.star-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.7;
+  animation: twinkle ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+.fog-band {
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  height: 60px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  filter: blur(20px);
+  animation: drift linear infinite;
+}
+@keyframes drift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(20%); }
+}
+
+.bolt {
+  animation: bolt-flicker 8s infinite;
+}
+@keyframes bolt-flicker {
+  0%, 88%, 92%, 100% { opacity: 0; }
+  89%, 91% { opacity: 0.6; }
+  90% { opacity: 1; filter: drop-shadow(0 0 20px rgba(255, 250, 200, 0.9)); }
+}
+
+/* ============ Grain texture ============ */
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/></svg>");
+  background-size: 200px 200px;
+  z-index: 1;
+}
+
+/* ============ Helpers ============ */
+.font-display {
+  font-family: var(--display);
+  font-feature-settings: 'ss01', 'kern';
+}
+.font-display-it {
+  font-family: var(--display);
+  font-style: italic;
+}
+.font-mono {
+  font-family: var(--mono);
+}
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+.deg {
+  font-size: 0.34em;
+  vertical-align: 0.85em;
+  margin-left: 0.04em;
+  letter-spacing: -0.04em;
+}
+
+/* ============ Reduce motion ============ */
+@media (prefers-reduced-motion: reduce) {
+  .sun-rays,
+  .sun-pulse,
+  .raindrop,
+  .snowflake,
+  .star,
+  .fog-band,
+  .bolt,
+  .scene-thunder::after {
+    animation: none !important;
+  }
+}
+
+/* Custom scrollbar — subtle on dark scenes */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
