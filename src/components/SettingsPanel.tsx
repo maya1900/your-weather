@@ -161,6 +161,40 @@ export function SettingsPanel({ open, onClose }: Props) {
             </button>
           </Section>
 
+          <Section label="关于">
+            <p className="text-[12px] text-stone-400 leading-relaxed mb-3">
+              基于 OpenWeather 的极简天气面板。数据本地缓存，单位与收藏均保存在浏览器。
+            </p>
+            <div className="flex flex-col gap-1.5 text-[12px]">
+              <a
+                href="https://github.com/maya1900/your-weather"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center gap-2 text-stone-200 hover:text-white underline-offset-4 hover:underline"
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4 1 0 2 .1 2.9.4 2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5C20.2 21.4 23.5 17.1 23.5 12 23.5 5.7 18.3.5 12 .5z" />
+                </svg>
+                <span>GitHub 仓库</span>
+                <span className="ml-auto font-mono text-[10px] text-stone-500">
+                  maya1900/your-weather
+                </span>
+              </a>
+              <a
+                href="https://github.com/maya1900/your-weather/issues"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center gap-2 text-stone-200 hover:text-white underline-offset-4 hover:underline"
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 8v4M12 16h.01" strokeLinecap="round" />
+                </svg>
+                <span>提交反馈 / Issues</span>
+              </a>
+            </div>
+          </Section>
+
           <p className="font-mono text-[10px] text-stone-600 tracking-widest uppercase">
             your weather · settings
           </p>
